@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('events_event_types', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('events_id');
-            $table->unsignedBigInteger('event_type_id');
+            $table->unsignedBigInteger('event_types_id');
 
             $table->foreign('events_id')->references('id')->on('events')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('event_type_id')->references('id')->on('event_type')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('event_types_id')->references('id')->on('event_types')->onUpdate('cascade')->onDelete('restrict');
             $table->timestamps();
         });
     }

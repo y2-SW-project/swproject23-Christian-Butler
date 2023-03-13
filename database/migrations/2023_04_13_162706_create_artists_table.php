@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('genre');
-            $table->date('date of birth');
+            $table->date('date_of_birth');
             $table->timestamps();
 
             

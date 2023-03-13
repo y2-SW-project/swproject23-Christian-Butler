@@ -17,7 +17,7 @@ return new class extends Migration
             $table->time('start_time');
             $table->bigInteger('venues_id')->unsigned();
             $table->bigInteger('artist_id')->unsigned();
-            $table->timestamps();
+            
 
             $table->foreign('venues_id')->references('id')->on('venues')->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('artist_id')->references('id')->on('artists')->onUpdate('cascade')->onDelete('restrict');
@@ -31,15 +31,19 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('events');
+        Schema::table('events', function(Blueprint $table){
 
-        $table->dropForeign(['venues_id']);
+            $table->dropForeign(['venues_id']);
         $table->dropColumn('venues_id');
 
 
         $table->dropForeign(['artist_id']);
         $table->dropColumn('artist_id');
 
+
+        });
+
+        Schema::dropIfExists('events');
 
     }
 };
