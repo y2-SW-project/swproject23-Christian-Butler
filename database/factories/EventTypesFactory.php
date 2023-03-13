@@ -17,8 +17,8 @@ class EventTypesFactory extends Factory
     public function definition(): array
     {
         return [
-            "event_name"->$this->faker->name,
-            "location"->$this->faker->text,
+            "event_name"=>$this->faker->name,
+            "location"=>$this->faker->text,
         ];
     }
 }
