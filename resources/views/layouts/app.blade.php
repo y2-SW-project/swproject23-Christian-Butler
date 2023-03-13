@@ -18,10 +18,10 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-primary shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-brand text-light" href="{{ url('/home') }}">
+                   EventSource
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -31,8 +31,16 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         @if (Route::has('home'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
+                        <li class="nav-item ">
+                            <a class="nav-link text-light" href="{{ route('home') }}">{{ __('Home') }}</a>
+                        </li>
+                        @endif
+                    </ul>
+
+                    <ul class="navbar-nav me-auto">
+                        @if (Route::has('discover'))
+                        <li class="nav-item ">
+                            <a class="nav-link text-light" href="{{ route('discover') }}">{{ __('Discover') }}</a>
                         </li>
                         @endif
                     </ul>
@@ -54,7 +62,7 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
@@ -75,10 +83,11 @@
                 </div>
             </div>
         </nav>
-
-        <main class="py-4">
+       
+        <main class="">
             @yield('content')
         </main>
+        
     </div>
 </body>
 </html>
