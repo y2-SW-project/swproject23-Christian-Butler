@@ -18,10 +18,10 @@ class EventsFactory extends Factory
     {
         return [
 
-            "date"->$this->faker->date,
-            "start_time"->$this->faker->time,
-            
-            //
+            "date"=>$this->faker->date,
+            "start_time"=>$this->faker->time,
+            "venues_id" => 1,
+            "artist_id" => 1
         ];
     }
 }
