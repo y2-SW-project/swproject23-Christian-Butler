@@ -23,6 +23,6 @@ class Events extends Model
 
     public function event_types()
     {
-        return $this->belongsToMany(Event_Types::class)->withTimestamps();
+        return $this->belongsToMany(EventTypes::class, 'events_event_types')->withTimestamps();
     }
 }
