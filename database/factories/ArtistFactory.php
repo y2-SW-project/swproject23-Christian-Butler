@@ -17,10 +17,10 @@ class ArtistFactory extends Factory
     public function definition(): array
     {
         return [
-            "first_name"->$this->faker->name,
-            "last_name"->$this->faker->name,
-            "genre"->$this->faker->word,
-            "date"->$this->$faker->date,
+            "first_name"=>$this->faker->name,
+            "last_name"=>$this->faker->name,
+            "genre"=>$this->faker->word,
+            "date_of_birth"=>$this->faker->date,
         ];
     }
 }
