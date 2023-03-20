@@ -35,15 +35,16 @@
                             <a class="nav-link text-light" href="{{ route('home') }}">{{ __('Home') }}</a>
                         </li>
                         @endif
+                        <li class="nav-item ">
+                            {{-- <a class="nav-link text-light" href="{{ route('discover') }}">{{ __('Discover') }}</a> --}}
+                            <a class="nav-link text-light" href="#">{{ __('Discover') }}</a>
+
+                        </li>
                     </ul>
 
-                    <ul class="navbar-nav me-auto">
-                        @if (Route::has('discover'))
-                        <li class="nav-item ">
-                            <a class="nav-link text-light" href="{{ route('discover') }}">{{ __('Discover') }}</a>
-                        </li>
-                        @endif
-                    </ul>
+                    {{-- <ul class="navbar-nav me-auto">
+
+                    </ul> --}}
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
