@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Events;
+use App\Models\EventTypes;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\RedirectResponse;
@@ -25,7 +26,9 @@ class EventsController extends Controller
      */
     public function create()
     {
-        return view('events.create');
+        
+        $events = Events::all();
+        return view('events.create')->with('events', $events);
     }
 
     /**
