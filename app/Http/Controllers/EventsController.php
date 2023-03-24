@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Venue;
+use App\Models\Artist;
 use App\Models\Events;
 use App\Models\EventTypes;
 use Illuminate\Http\Request;
@@ -26,7 +28,9 @@ class EventsController extends Controller
      */
     public function create()
     {
-        
+        $venue=Venue::all();
+        $artist = Artist::all();
+        $event_types=EventTypes::all();
         $events = Events::all();
         return view('events.create')->with('events', $events);
     }
