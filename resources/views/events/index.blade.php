@@ -36,7 +36,8 @@
           </div>
           <div class="align-items-end py-2 ps-2">
            {{-- <a href="{{ route('product.blade.php') }}" class="btn btn-primary">Buy Tickets</a> --}}
-           <a class="btn btn-primary" href='Buy Tickets'>{{__('Buy Tickets')}}</a>
+           <a href="{{ route('events.show', $event) }}" class="btn-link btn-lg my-3 py-2 text-decoration-none bg-primary"><h5>Buy Tickets<h4></a>
+           <a href="{{ route('events.edit', $event) }}" class="btn-link btn-lg my-3 py-2 text-decoration-none"><h5>Edit an Event<h4></a>
           </div>
         </div>
       </div>
@@ -137,6 +138,7 @@
           <div class="align-items-end py-2 ps-2">
             <a href="product.html" class="btn btn-primary" role="button">Buy Tickets</a>
           </div>
+          
         </div>
       </div>
       @endforeach

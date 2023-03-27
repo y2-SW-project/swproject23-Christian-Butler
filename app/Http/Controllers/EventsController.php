@@ -32,7 +32,7 @@ class EventsController extends Controller
         $artist = Artist::all();
         $event_types=EventTypes::all();
         $events = Events::all();
-        return view('events.create')->with('events', $events);
+        return view('events.create')->with('events', $events)->with('event_types', $event_types)->with("venue", $venue)->with('artist',$artist);
     }
 
     /**
@@ -40,23 +40,58 @@ class EventsController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        //
+       // dd($request);
+        $request->validate([
+            'date'=> 'required',
+            'start_time' => 'required',
+            'venues_id'=>'required',
+            'artist_id' => 'required'
+             
+        ]);
+
+        $events = new Events;
+
+        $events->date = $request->date;
+        $events->start_time = $request->start_time;
+        $events->venues_id = $request->venues_id;
+        $events->artist_id = $request->artist_id;
+
+        $events->save();
+
+        //add entry to pivot table
+        $events->event_types()->attach($request->event_name_id);
+
+
+        return to_route('events.index');
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id): Response
+    public function show()
     {
-        //
+        $venue=Venue::all();
+        $artist = Artist::all();
+        $event_types=EventTypes::all();
+        $events = Events::all();
+        return view('events.show')->with('events', $events);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id): Response
+    public function edit(Events $events)
+
+
     {
-        //
+        // $events = Events::where('id', $id)->get();
+
+        $venue=Venue::all();
+        $artist = Artist::all();
+        $event_types=EventTypes::all();
+        $events = Events::all();
+        return view('events.edit')->with('events', $events)->with('event_types', $event_types)->with("venue", $venue)->with('artist',$artist);
     }
 
     /**
