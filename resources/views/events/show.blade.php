@@ -4,7 +4,8 @@
 @section('content')
 
 <div class="bg-image shadow-2-strong py-2 my-5 container-fluid ">
-    <div class=" row mask min-vh-200 my-2 img-fluid" style="background-image: url('./storage/public/images/sonder-tour1.jpeg')">
+    <div class=" row mask min-vh-200 my-2 img-fluid" style="')">
+      <img src="./storage/public/images/sondor-tour1.jpeg">
       <div class=" min-vh-100 d-flex align-items-center justify-content-center text-center h-100 py-5">
         <div class="text-light">
           <h1 class="mb-3">Dermot Kennedy</h1>
@@ -17,7 +18,7 @@
   <hr>
 
   <div class="container-fluid"> 
-    <div class="container-x py-3 justify-content-md-start align-items-start">
+    <div class="container py-3 justify-content-md-start align-items-start">
       <div class="row my-3">
         <div class="container justify-content-md-start">
           <div class="col-md-4">
@@ -34,27 +35,26 @@
       </div>
     </div>
     <div class="row my-3 justify-content-md-start">
-        @foreach ($events->slice(0,3) as $event)
+        
       <div class="container d-inline-flex flex-row">
         <div class="col-md-4 ">
           <div class="">
-              <p class="fw-bold">{{$event->$event_type->name}}</p>
-              <p class="text-dark">{{$event->date}}</p>
+              <p class="fw-bold">{{$event->date}}</p>
+              <p class="text-dark">{{$event->time}}</p>
           </div>
-      </div>
-      <div class="col-md-4 ">
-        <div class="align-items-start ">
-            <p class="fw-bold">Sonder Tour</p>
-            <p class="text-dark">3Arena・St Annes Park</p>
         </div>
-    </div>
-    <div class="col-md-4 ">
-      <div class="align-items-start flex-row ">
-        <a href="checkout.html" class="btn btn-primary" role="button">Buy Tickets</a>
+        <div class="col-md-4 ">
+          <div class="align-items-start ">
+            <p class="fw-bold">{{$event->event_types[0]->event_name}}</p>
+            <p class="text-dark">{{$event->event_types[0]->location}}</p>
+          </div>
+        </div>
+        <div class="col-md-4 ">
+          <div class="align-items-start flex-row ">
+            <a href="{{ route('events.index', $event)}}" class="btn btn-primary" role="button">Buy Tickets</a>
+          </div>
+        </div>
       </div>
-    </div>
-    </div>
-    @endforeach
   </div>
   
   </div>

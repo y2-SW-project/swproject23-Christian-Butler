@@ -69,13 +69,14 @@ class EventsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show()
+    public function show(Events $event)
     {
         $venue=Venue::all();
         $artist = Artist::all();
-        $event_types=EventTypes::all();
-        $events = Events::all();
-        return view('events.show')->with('events', $events);
+        // $event_types=EventTypes::all();
+       // $events = Events::all();
+    //    dd($event->event_types);
+        return view('events.show')->with('event', $event)->with("venue", $venue)->with('artist',$artist);
     }
 
     /**
