@@ -13,7 +13,7 @@
             @csrf
 
             <select name="event_name_id" class="form-select" aria-label="Default select example" class="py-2 my-2">
-                <option selected>Open this select menu</option>
+                <option selected>Event Types</option>
                 @foreach($event_types as $event_type)
                 <option value="{{$event_type->id}}" {{(old('event_type_id') == $event_type->id) ? "selected" : ""}}>{{$event_type->event_name}}</option>
                 @endforeach
@@ -31,7 +31,7 @@
 
 
             <select name="artist_id" class="form-select form-select-sm" aria-label=".form-select-sm example">
-                <option selected = "artist_id" >Open this select menu</option>
+                <option selected = "artist_id" >Artists</option>
                 @foreach($artist as $artist)
                 <option value="{{$artist->id}}" {{(old('artist_id') == $artist->id) ? "selected" : ""}}>{{$artist->first_name}}
                     
@@ -41,14 +41,14 @@
              
 
               <select name="venues_id" class="form-select form-select-sm" aria-label=".form-select-sm example">
-                <option selected = "artist_id" >Open this select menu</option>
+                <option selected = "artist_id" >Venues</option>
                 @foreach($venue as $venues)
                 <option value="{{$venues->id}}" {{(old('venue_id') == $venues->id) ? "selected" : ""}}>{{$venues->name}}
                 
                 @endforeach
               </select>
 
-              <button type="submit" class="btn btn-primary">Create Event</button>
+              <button type="submit" class="btn btn-primary py-2">Edit Event</button>
             </form>
 </div>
 
