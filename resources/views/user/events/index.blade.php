@@ -14,7 +14,7 @@
     </div>  
 </div>
 <div class="container-xxl py-2">
-  <a href="{{ route('events.create') }}" class="btn-link btn-lg mb-2 text-decoration-none"><h4>Add a Event<h4></a>
+  <a href="{{ route('admin.events.create') }}" class="btn-link btn-lg mb-2 text-decoration-none"><h4>Add a Event<h4></a>
   
   
   
@@ -32,13 +32,13 @@
             <h5 class="card-title">{{$event->artist->first_name}}</h5>
             <p class="card-text">
               {{$event->date}} -> {{$event->start_time}}
+              
             </p>
+            <a href="{{ route('user.events.show', $event) }}" class="btn-link btn-lg my-3 py-2 text-decoration-none bg-primary"><h5>Buy Tickets<h4></a>
           </div>
-          <div class="align-items-end py-2 ps-2">
+          {{-- <div class="align-items-end ">
            {{-- <a href="{{ route('product.blade.php') }}" class="btn btn-primary">Buy Tickets</a> --}}
-           <a href="{{ route('events.show', $event) }}" class="btn-link btn-lg my-3 py-2 text-decoration-none bg-primary"><h5>Buy Tickets<h4></a>
-           <a href="{{ route('events.edit', $event) }}" class="btn-link btn-lg my-3 py-2 text-decoration-none"><h5>Edit an Event<h4></a>
-          </div>
+           {{-- <a href="{{ route('user.events.show', $event) }}" class="btn-link btn-lg my-3 py-2 text-decoration-none bg-primary"><h5>Buy Tickets<h4></a> --}} 
         </div>
       </div>
       @endforeach

@@ -18,11 +18,11 @@
   <hr>
 
   <div class="container-fluid"> 
-    <div class="container py-3 justify-content-md-start align-items-start">
+    <div class="container-x py-3 justify-content-md-start align-items-start">
       <div class="row my-3">
         <div class="container justify-content-md-start">
           <div class="col-md-4">
-            <h5>Hello<h5>
+            <h5>St Annes Park<h5>
           </div>
         </div>
       </div>
@@ -35,7 +35,6 @@
       </div>
     </div>
     <div class="row my-3 justify-content-md-start">
-        
       <div class="container d-inline-flex flex-row">
         <div class="col-md-4 ">
           <div class="">
@@ -49,9 +48,18 @@
             <p class="text-dark">{{$event->event_types[0]->location}}</p>
           </div>
         </div>
-        <div class="col-md-4 ">
+        <div class="col-md-4 py-2 ">
           <div class="align-items-start flex-row ">
-            <a href="{{ route('events.index', $event)}}" class="btn btn-primary" role="button">Buy Tickets</a>
+            <a href="{{ route('admin.events.index', $event)}}" class="btn btn-primary my-2" role="button">Buy Tickets</a>
+            <form action="{{ route('admin.events.destroy', $event) }}" method="post">
+              @method('delete')
+              @csrf
+              <button type="submit" class="btn btn-danger ml-4" onclick="return confirm('Are you sure you want to delete?')">Delete Event </button>
+          </div>
+        </div>
+        <div class="col-md-4 ">
+          <div class=" ">
+            
           </div>
         </div>
       </div>

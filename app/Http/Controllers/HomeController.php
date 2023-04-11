@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,7 +24,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('events.home');
+        $user = Auth::user();
+        $home = 'home';
+
+        if($user->hasRole('admin')){
+            $home = 'admin.events.index';
+        }
+        else if($user->hasRole('user')){
+            $home = 'user.events.index';
+        }
+        return redirect()->route($home);
     }
 }
 

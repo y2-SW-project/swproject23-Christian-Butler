@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\EventsController as AdminEventsController;
+use App\Http\Controllers\User\EventsController as UserEventsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
@@ -35,5 +37,8 @@ require __DIR__.'/auth.php';
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\EventsController::class, 'index'])->name('home');
-Route::resource('/events',App\Http\Controllers\EventsController::class)->names('events');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('/admin/events',AdminEventsController::class)->middleware(['auth'])->names('admin.events');
+Route::resource('/user/events',UserEventsController::class)->middleware(['auth'])->names('user.events')->only(['index', 'show']);
+
+
