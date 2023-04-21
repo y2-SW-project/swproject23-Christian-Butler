@@ -5,7 +5,7 @@
 
 <div class="bg-image shadow-2-strong py-2 my-5 container-fluid ">
     <div class=" row mask min-vh-200 my-2 img-fluid" style="')">
-      <img src="./storage/public/images/sondor-tour1.jpeg">
+      <img src="storage/images/Adele.png">
       <div class=" min-vh-100 d-flex align-items-center justify-content-center text-center h-100 py-5">
         <div class="text-light">
           <h1 class="mb-3">Dermot Kennedy</h1>
@@ -52,6 +52,10 @@
         <div class="col-md-4 ">
           <div class="align-items-start flex-row ">
             <a href="{{ route('events.index', $event)}}" class="btn btn-primary" role="button">Buy Tickets</a>
+            <form action="{{ route('events.destroy', $event) }}" method="post">
+              @method('delete')
+              @csrf
+              <button type="submit" class="btn btn-danger ml-4" onclick="return confirm('Are you sure you want to delete?')">Delete Event </button>
           </div>
         </div>
       </div>

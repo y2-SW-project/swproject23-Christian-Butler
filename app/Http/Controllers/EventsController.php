@@ -100,14 +100,29 @@ class EventsController extends Controller
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        //
+        $events = new Events;
+
+        $events->date = $request->date;
+        $events->start_time = $request->start_time;
+        $events->venues_id = $request->venues_id;
+        $events->artist_id = $request->artist_id;
+
+        $events->save();
+
+        //add entry to pivot table
+        $events->event_types()->attach($request->event_name_id);
+
+
+        return to_route('events.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id): RedirectResponse
+    public function destroy(Events $events)
     {
-        //
+        $events->delete();
+
+        return to_route('events.index');
     }
 }
