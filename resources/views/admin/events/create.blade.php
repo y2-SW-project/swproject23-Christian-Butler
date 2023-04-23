@@ -8,7 +8,7 @@
     <p>{{$error}}</p>
         @endforeach
 
-        <form action=" {{ route('events.store') }}" method="POST" enctype="multipart/form-data">
+        <form action=" {{ route('admin.events.store') }}" method="POST" enctype="multipart/form-data">
             {{-- @foreach($events as $event) --}}
             @csrf
 

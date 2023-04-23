@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="container-fluid bg-primary text-light py-2 ">
     <div class="container-xl">
         <div class="row justify-md-content-center d-flex py-5 text-light">
@@ -8,44 +6,19 @@
                 <h1 class="fw-bold text-capitlize px-5 lh1 text-light">All Your Favorite Events in One Place</h1>
             </div>
             <div class="col-md-6">
-                <img src="./storage/images/Frame.svg" class="img-fluid" alt="woman using a dj machine" />
+                <img src="storage/images/Frame.svg" class="img-fluid" alt="woman using a dj machine" />
             </div>
         </div>
     </div>  
 </div>
 <div class="container-xxl py-2">
-  <a href="{{ route('admin.events.create') }}" class="btn-link btn-lg mb-2 text-decoration-none"><h4>Add a Event<h4></a>
+  <a href="<?php echo e(route('events.create')); ?>" class="btn-link btn-lg mb-2 text-decoration-none"><h4>Add a Event<h4></a>
   
   
   
   <h4>Music Events</h4>
   <div class="my-3 row justify-content-md-center px-2">
-      @foreach ($events->slice(0,3) as $event)
-      <div class="col-md-4 py-2 my-3">
-        <div class="card">
-          <img
-            src="./storage/images/Dermot Kennedy.png"
-            class="card-img-top img-fluid"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">{{$event->artist->first_name}}</h5>
-            <p class="card-text">
-              {{$event->date}} -> {{$event->start_time}}
-            </p>
-          </div>
-          <div class="align-items-end py-2 ps-2">
-           {{-- <a href="{{ route('product.blade.php') }}" class="btn btn-primary">Buy Tickets</a> --}}
-           <a href="{{ route('admin.events.show', $event) }}" class="btn-link btn-lg my-3 py-2 text-decoration-none bg-primary"><h5>Buy Tickets<h4></a>
-           <a href="{{ route('admin.events.edit', $event) }}" class="btn-link btn-lg my-3 py-2 text-decoration-none"><h5>Edit an Event<h4></a>
-          </div>
-        </div>
-      </div>
-      @endforeach
-    </div>
-
-    <div class="my-3 row justify-content-md-center px-2">
-      @foreach ($events->slice(0,3) as $event)
+      <?php $__currentLoopData = $events->slice(0,3); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $event): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
       <div class="col-md-4 py-2 my-3">
         <div class="card">
           <img
@@ -54,18 +27,46 @@
             alt="..."
           />
           <div class="card-body">
-            <h5 class="card-title">{{$event->artist->first_name}}
-            </h5>
+            <h5 class="card-title"><?php echo e($event->artist->first_name); ?></h5>
             <p class="card-text">
-              {{$event->date}} -> {{$event->start_time}}
+              <?php echo e($event->date); ?> -> <?php echo e($event->start_time); ?>
+
             </p>
           </div>
           <div class="align-items-end py-2 ps-2">
-           <a class="btn btn-primary" href='Buy Tickets'>{{__('Buy Tickets')}}</a>
+           
+           <a href="<?php echo e(route('events.show', $event)); ?>" class="btn-link btn-lg my-3 py-2 text-decoration-none bg-primary"><h5>Buy Tickets<h4></a>
+           <a href="<?php echo e(route('events.edit', $event)); ?>" class="btn-link btn-lg my-3 py-2 text-decoration-none"><h5>Edit an Event<h4></a>
           </div>
         </div>
       </div>
-      @endforeach
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    </div>
+
+    <div class="my-3 row justify-content-md-center px-2">
+      <?php $__currentLoopData = $events->slice(0,3); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $event): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+      <div class="col-md-4 py-2 my-3">
+        <div class="card">
+          <img
+            src="storage/images/Dermot Kennedy.png"
+            class="card-img-top img-fluid"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title"><?php echo e($event->artist->first_name); ?>
+
+            </h5>
+            <p class="card-text">
+              <?php echo e($event->date); ?> -> <?php echo e($event->start_time); ?>
+
+            </p>
+          </div>
+          <div class="align-items-end py-2 ps-2">
+           <a class="btn btn-primary" href='Buy Tickets'><?php echo e(__('Buy Tickets')); ?></a>
+          </div>
+        </div>
+      </div>
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>
   </div>
 
@@ -93,7 +94,7 @@
   <div class="container-xxl py-2">
     <h4 class="my-2">Sport Events</h4>
     <div class="my-3 row justify-content-md-center">
-      @foreach($events->slice(0,3) as $event)
+      <?php $__currentLoopData = $events->slice(0,3); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $event): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
       <div class="col-md-4 py-2 my-3">
         <div class="card">
           <img
@@ -102,15 +103,16 @@
             alt="..."
           />
           <div class="card-body">
-            @foreach ($event->event_types as $event_type)
-            <h4 class="card-title">{{$event_type->event_name}}</h4>
-            @endforeach
-            {{-- <h4 class="card-title">{{$event->event_types->event_name}}</h4> --}}
-            @foreach ($event->event_types as $event_type)
+            <?php $__currentLoopData = $event->event_types; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $event_type): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <h4 class="card-title"><?php echo e($event_type->event_name); ?></h4>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            
+            <?php $__currentLoopData = $event->event_types; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $event_type): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <p class="card-text">
-              {{$event_type->location}}
+              <?php echo e($event_type->location); ?>
+
             </p>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
           </div>
           <div class="align-items-end py-2 ps-2">
             <a href="product.html" class="btn btn-primary" role="button">Buy Tickets</a>
@@ -125,15 +127,16 @@
             alt="..."
           />
           <div class="card-body">
-            @foreach ($event->event_types as $event_type)
-            <h4 class="card-title">{{$event_type->event_name}}</h4>
-            @endforeach
-            {{-- <h4 class="card-title">{{$event->event_types->event_name}}</h4> --}}
-            @foreach ($event->event_types as $event_type)
+            <?php $__currentLoopData = $event->event_types; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $event_type): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <h4 class="card-title"><?php echo e($event_type->event_name); ?></h4>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            
+            <?php $__currentLoopData = $event->event_types; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $event_type): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <p class="card-text">
-              {{$event_type->location}}
+              <?php echo e($event_type->location); ?>
+
             </p>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
           </div>
           <div class="align-items-end py-2 ps-2">
             <a href="product.html" class="btn btn-primary" role="button">Buy Tickets</a>
@@ -141,7 +144,7 @@
           
         </div>
       </div>
-      @endforeach
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>
   </div>
   <div class="container-fluid py-2 border-1 border-top bg-primary">
@@ -217,4 +220,6 @@
           </ul>
 
         </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/html/resources/views/events/index.blade.php ENDPATH**/ ?>
